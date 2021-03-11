@@ -1,7 +1,7 @@
 const { GraphQLScalarType, Kind } = require('graphql')
 
 // Fake DB
-const brands = [ { name: "", createdAt: new Date(), type: ["shoes"], country: "France", id: new Date() } ]
+const brands = []
 
 const Types = ["shoes", "clothes", "bags", "hats", "accessories"]
 
@@ -23,7 +23,7 @@ const resolvers = {
   }),
   Query: {
     brand: (parent, { id }, context, info) => {
-      return brands.find(brand => brand.id === id)
+      return brands.find(brand => `${brand.id.getTime()}` === id)
     },
     brands: (parent, args, context, info) => {
       return brands
@@ -35,7 +35,6 @@ const resolvers = {
       if (type.filter(e => !Types.includes(e)).length != 0) throw new Error(`Type should only contain at least one of those values: [${Types.join(', ')}]`)
 
       const id = new Date()
-      console.log("IDDD ", id)
       const newBrand = { id, name, createdAt, type, country, description }
 
       brands.push(newBrand)
@@ -55,10 +54,10 @@ const resolvers = {
       return brand
     },
     deleteBrand: (parent, { id }, context, info) => {
-      const brandIndex = brands.findIndex(brand => brand.id === id)
+      const brandIndex = brands.findIndex(brand => `${brand.id.getTime()}` === id)
 
       if (brandIndex === -1) throw new Error("Brand not found.")
-      const deletedUsers = users.splice(userIndex, 1)
+      const deletedUsers = brands.splice(brandIndex, 1)
       return deletedUsers[0]
     }
   }
