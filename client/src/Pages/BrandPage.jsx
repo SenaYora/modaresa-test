@@ -9,7 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 
-import AddBrandComponent from '../Components/AddBrandDialog/AddBrandButton'
+import AddBrand from '../Components/AddBrandDialog/'
 import Brand from '../Components/BrandCard/Brand'
 import { Schema } from "../Schema/schema.js"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -77,7 +77,7 @@ function BrandPage({ classes }) {
               onDelete={setDeletion}
             />
           )}
-          <AddBrandComponent />
+          <AddBrand />
         </div>
       }
       <Dialog
