@@ -14,9 +14,14 @@ const styles = {
     width: 80,
     height: 80,
     outline: 'none',
-    border: '2px solid #000',
+    WebkitBoxShadow: '0px 0px 5px 2px #000',
+    MozBoxShadow: '0px 0px 5px 2px #000',
+    boxShadow: '0px 0px 5px 2px #000',
+    border: 'none',
     '&:active': {
-      border: '1px solid #000b'
+      WebkitBoxShadow: '0px 0px 5px 2px #000a',
+      MozBoxShadow: '0px 0px 5px 2px #000a',
+      boxShadow: '0px 0px 5px 2px #000a',
     }
   },
   plusText: {

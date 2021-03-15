@@ -31,7 +31,7 @@ const styles = {
     width: '100%',
     height: '100%',
     justifyContent: 'space-evenly',
-    gridTemplateColumns: 'repeat(4, 300px)'
+    gridTemplateColumns: 'repeat(auto-fill, 300px)'
   }
 };
 
