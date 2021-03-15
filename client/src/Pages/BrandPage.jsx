@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { withStyles } from "@material-ui/core";
-import Loader from "react-loader-spinner";
+import React, { useEffect, useState } from 'react'
+import { withStyles } from '@material-ui/core'
+import Loader from 'react-loader-spinner'
 
-import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-
+import DeletionDialog from '../Components/DeletionDialog/DeletionDialog'
 import AddBrand from '../Components/AddBrandDialog/'
 import Brand from '../Components/BrandCard/Brand'
-import { Schema } from "../Schema/schema.js"
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { Schema } from '../Schema/schema.js'
+
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 const styles = {
   main: {
@@ -84,27 +79,7 @@ function BrandPage({ classes }) {
           <AddBrand onAdd={addBrand} />
         </div>
       }
-      <Dialog
-        open={deletion !== -1}
-        onClose={() => setDeletion(-1)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">{"Delete this brand ?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            By clickingthe "Delete" button you'll delete this brand definitely
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setDeletion(-1)} color="primary">
-            No thanks
-          </Button>
-          <Button onClick={() => onDelete(deletion)} color="primary" autoFocus>
-            Delete
-          </Button>
-        </DialogActions>
-      </Dialog>
+    <DeletionDialog deletion={deletion} setDeletion={setDeletion} onDelete={onDelete} />
     </div>
   )
 }
