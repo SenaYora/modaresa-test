@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core'
 import FormLabel from '@material-ui/core/FormLabel'
 import FormControl from '@material-ui/core/FormControl'
 import FormGroup from '@material-ui/core/FormGroup'
-import FormHelperText from '@material-ui/core/FormHelperText';
+import FormHelperText from '@material-ui/core/FormHelperText'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import TextField from '@material-ui/core/TextField'
 import Checkbox from '@material-ui/core/Checkbox'
@@ -22,12 +22,12 @@ const styles = {
   }
 }
 
-function AddBrandDialogContent({ classes, formData, setFormData, inputsError, typesError }) {
+function AddBrandDialogContent ({ classes, formData, setFormData, inputsError, typesError }) {
   useEffect(() => {
-    setFormData( prev => {
+    setFormData(prev => {
       const newTypes = prev.types
 
-      newTypes.forEach(e => e.checked = false)
+      newTypes.forEach(e => { e.checked = false })
       return { inputs: {}, types: newTypes }
     })
   }, [setFormData])
@@ -57,7 +57,7 @@ function AddBrandDialogContent({ classes, formData, setFormData, inputsError, ty
           <Checkbox
             checked={e.checked}
             onChange={(event) => onCheckboxChange(event, i)}
-            color="primary"
+            color='primary'
           />
         }
       />
@@ -68,13 +68,13 @@ function AddBrandDialogContent({ classes, formData, setFormData, inputsError, ty
     <div>
       {Inputs.map((e, i) =>
         <TextField
-          key={i} margin="dense" id={e.id} label={e.label}
-          type="text" required={e.required} fullWidth={e.fullWidth} autoFocus={e.autofocus}
+          key={i} margin='dense' id={e.id} label={e.label}
+          type='text' required={e.required} fullWidth={e.fullWidth} autoFocus={e.autofocus}
           onChange={onInputChange} error={inputsError[e.id]}
         />
       )}
       <FormControl required error={typesError} className={classes.checkboxContainer}>
-        <FormLabel component="legend">Types</FormLabel>
+        <FormLabel component='legend'>Types</FormLabel>
         <FormGroup row>
           {CheckBoxMap}
         </FormGroup>

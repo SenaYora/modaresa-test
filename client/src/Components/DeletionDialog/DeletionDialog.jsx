@@ -7,22 +7,22 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 
-function DeletionDialog({ deletion, setDeletion, onDelete }) {
+function DeletionDialog ({ deletion, setDeletion, onDelete }) {
   return (
     <Dialog open={deletion !== -1} onClose={() => setDeletion(-1)}>
-      <DialogTitle id="alert-dialog-title">Delete this brand ?</DialogTitle>
+      <DialogTitle id='alert-dialog-title'>Delete this brand ?</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">
+        <DialogContentText id='alert-dialog-description'>
           By clicking the "Delete" button, you'll delete this brand definitely
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => setDeletion(-1)} color="secondary">
+        <Button onClick={() => setDeletion(-1)} color='secondary'>
           No thanks
-      </Button>
-        <Button onClick={() => onDelete(deletion)} color="secondary" autoFocus>
+        </Button>
+        <Button onClick={() => onDelete(deletion)} color='secondary' autoFocus>
           Delete
-      </Button>
+        </Button>
       </DialogActions>
     </Dialog>
   )

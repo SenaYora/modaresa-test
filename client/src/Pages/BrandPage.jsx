@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { withStyles } from '@material-ui/core'
+import fetch from 'node-fetch'
 import Loader from 'react-loader-spinner'
 
 import DeletionDialog from '../Components/DeletionDialog/DeletionDialog'
@@ -15,7 +16,7 @@ const styles = {
     justifyContent: 'center',
     height: '100%',
     boxSizing: 'border-box',
-    padding: 50,
+    padding: 50
   },
   infoText: {
     display: 'flex',
@@ -33,9 +34,9 @@ const styles = {
     justifyContent: 'space-evenly',
     gridTemplateColumns: 'repeat(auto-fill, 300px)'
   }
-};
+}
 
-function BrandPage({ classes }) {
+function BrandPage ({ classes }) {
   const [brands, setBrands] = useState(null)
   const [deletion, setDeletion] = useState(-1)
 
@@ -60,10 +61,10 @@ function BrandPage({ classes }) {
       {!brands && (
         <div className={classes.infoText}>
           Loading...
-          <Loader type="TailSpin" color="black" height={60} width={60} />
+          <Loader type='TailSpin' color='black' height={60} width={60} />
         </div>
       )}
-      { brands &&
+      {brands &&
         <div className={classes.brandsContainer}>
           {brands.map(({ id, name, description, type, country, createdAt }, i) =>
             <Brand
@@ -77,11 +78,10 @@ function BrandPage({ classes }) {
             />
           )}
           <AddBrand onAdd={addBrand} />
-        </div>
-      }
-    <DeletionDialog deletion={deletion} setDeletion={setDeletion} onDelete={onDelete} />
+        </div>}
+      <DeletionDialog deletion={deletion} setDeletion={setDeletion} onDelete={onDelete} />
     </div>
   )
 }
 
-export default withStyles(styles)(BrandPage);
+export default withStyles(styles)(BrandPage)

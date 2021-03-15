@@ -12,7 +12,7 @@ const styles = {
     backgroundColor: '#f4f4f4',
     WebkitBoxShadow: '0px 0px 5px 0px #000',
     MozBoxShadow: '0px 0px 5px 0px #000',
-    boxShadow: '0px 0px 5px 0px #000',
+    boxShadow: '0px 0px 5px 0px #000'
   },
   deleteButton: {
     position: 'absolute',
@@ -23,7 +23,7 @@ const styles = {
     outline: 'none',
     color: 'black',
     textDecoration: 'underline',
-    cursor:'pointer',
+    cursor: 'pointer'
   },
   nameText: {
     fontWeight: 700,
@@ -43,7 +43,7 @@ const styles = {
   },
   descriptionContainer: {
     marginTop: 25,
-    fontWeight: 500,
+    fontWeight: 500
   },
   descriptionText: {
     fontSize: 14,
@@ -65,7 +65,7 @@ const styles = {
   }
 }
 
-function Brand({ classes, id, name, country, type, description, onDelete }) {
+function Brand ({ classes, id, name, country, type, description, onDelete }) {
   return (
     <div className={classes.brandContainer}>
       <button className={classes.deleteButton} onClick={() => onDelete(id)}>delete</button>
@@ -73,13 +73,13 @@ function Brand({ classes, id, name, country, type, description, onDelete }) {
       <div className={classes.countryText}>{country}</div>
       <div className={classes.descriptionContainer}>
         Description:
-        <div className={classes.descriptionText}>{description || "- No description -"}</div>
+        <div className={classes.descriptionText}>{description || '- No description -'}</div>
       </div>
       <div className={classes.typeContainer}>
         <div className={classes.typeTitle}>Types:</div>
         <div className={classes.typeText}>
           {type.map((e, i) =>
-            <div>
+            <div key={i}>
               • {e.charAt(0).toUpperCase() + e.slice(1)}
             </div>
           )}

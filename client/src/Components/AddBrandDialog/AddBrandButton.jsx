@@ -7,7 +7,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 400,
+    height: 400
   },
   button: {
     borderRadius: '50%',
@@ -21,7 +21,7 @@ const styles = {
     '&:active': {
       WebkitBoxShadow: '0px 0px 5px 2px #000a',
       MozBoxShadow: '0px 0px 5px 2px #000a',
-      boxShadow: '0px 0px 5px 2px #000a',
+      boxShadow: '0px 0px 5px 2px #000a'
     }
   },
   plusText: {
@@ -30,7 +30,7 @@ const styles = {
   }
 }
 
-function AddBrandButton({ classes, onClick }) {
+function AddBrandButton ({ classes, onClick }) {
   return (
     <div className={classes.main}>
       <button className={classes.button} onClick={onClick}>

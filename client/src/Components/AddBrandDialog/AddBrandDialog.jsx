@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import fetch from 'node-fetch'
 
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
@@ -13,7 +14,7 @@ import Inputs from '../../json/inputs.json'
 import Types from '../../json/types.json'
 import { Schema } from '../../Schema/schema.js'
 
-function AddBrandDialog({ open, onClose, onAdd }) {
+function AddBrandDialog ({ open, onClose, onAdd }) {
   const [formData, setFormData] = useState({ inputs: {}, types: [...Types] })
   const [inputsError, setInputsError] = useState({})
   const [typesError, setTypesError] = useState(false)
@@ -23,11 +24,10 @@ function AddBrandDialog({ open, onClose, onAdd }) {
     let errorOccured = false
 
     Inputs.forEach(e => {
-      if (e.required && (!formData.inputs[e.id] || formData.inputs[e.id] === "")) {
+      if (e.required && (!formData.inputs[e.id] || formData.inputs[e.id] === '')) {
         newInputsError[e.id] = true
         errorOccured = true
-      } else
-        newInputsError[e.id] = false
+      } else { newInputsError[e.id] = false }
     })
     setInputsError(newInputsError)
 
@@ -36,8 +36,7 @@ function AddBrandDialog({ open, onClose, onAdd }) {
     if (nbChecked === 0) {
       errorOccured = true
       setTypesError(true)
-    } else
-      setTypesError(false)
+    } else { setTypesError(false) }
     return errorOccured
   }
 
@@ -50,7 +49,7 @@ function AddBrandDialog({ open, onClose, onAdd }) {
   const onSumbit = () => {
     if (!checkDataErrors()) {
       const { name, description, country } = formData.inputs
-      const types = formData.types.filter(e => e.checked).reduce((acc, e) => [ ...acc, e.id], [])
+      const types = formData.types.filter(e => e.checked).reduce((acc, e) => [...acc, e.id], [])
 
       publishForm(name, types, country, description, publishCallback)
     }
@@ -65,8 +64,8 @@ function AddBrandDialog({ open, onClose, onAdd }) {
     fetch(`http://localhost:4000/graphql?query=${Schema.addBrand(name, new Date().getTime(), type, country, description)}`,
       { method: 'POST' }
     )
-    .then(res => res.json()).then(res => callback(res.data))
-    .catch(console.error)
+      .then(res => res.json()).then(res => callback(res.data))
+      .catch(console.error)
   }
 
   return (
@@ -89,8 +88,8 @@ function AddBrandDialog({ open, onClose, onAdd }) {
 
       {/* Actions */}
       <DialogActions>
-        <Button onClick={onCloseDialog} color="primary">Cancel</Button>
-        <Button onClick={onSumbit} color="primary">Add</Button>
+        <Button onClick={onCloseDialog} color='primary'>Cancel</Button>
+        <Button onClick={onSumbit} color='primary'>Add</Button>
       </DialogActions>
     </Dialog>
   )

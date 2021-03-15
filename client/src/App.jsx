@@ -2,7 +2,7 @@ import React from 'react'
 
 import BrandPage from './Pages/BrandPage'
 
-function App() {
+function App () {
   return (
     <BrandPage />
   )
